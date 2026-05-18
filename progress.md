@@ -104,4 +104,26 @@
 - All builds, typechecks, tests, lint pass clean
 - Committed and pushed to `origin/main`
 
-## Next: Phase 6 — Merchant admin dashboard and storefront
+### 2026-05-18 — Phase 6: Merchant admin dashboard, storefront, and platform admin
+- Created customer storefront (`/store`):
+  - Product grid with cards showing name, price, description, stock
+  - Category filter dropdown and search input with debounced fetch
+  - Add-to-cart button with stock validation and toast feedback
+  - Link to cart page
+- Enhanced merchant dashboard (`/dashboard`):
+  - Revenue, orders, pending, product count stat cards
+  - Low stock alert banner for products with <= 5 stock
+  - Recent orders list with status badges and totals
+- Created platform super-admin panel (`/admin`):
+  - Layout with PLATFORM_ADMIN role guard and sidebar navigation
+  - Overview page with active/suspended/pending tenant counts
+  - Tenant management page with full CRUD table
+  - Inline status dropdown for each tenant (Active/Suspended/Pending)
+  - Create tenant form with name, slug, domain, plan selection
+- Updated tenants API:
+  - Protected GET / with PLATFORM_ADMIN role
+  - Added PATCH /:id/status for tenant status management
+- All builds, typechecks, tests, lint pass clean
+- Committed and pushed to `origin/main`
+
+## Next: Phase 7 — Payment integration and final polish

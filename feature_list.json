@@ -77,7 +77,7 @@
     {
       "id": "feat-006",
       "name": "Merchant admin dashboard",
-      "status": "planned",
+      "status": "done",
       "priority": 4,
       "dependencies": ["feat-002", "feat-003"],
       "acceptance_criteria": [
@@ -86,12 +86,12 @@
         "Order management UI",
         "Product management UI"
       ],
-      "evidence": ""
+      "evidence": "Merchant dashboard with revenue, order count, pending, product count widgets. Low stock alerts. Recent orders list with status badges. Customer storefront at /store with product grid, category filter, search, add-to-cart. Cart page with quantity controls and checkout."
     },
     {
       "id": "feat-007",
       "name": "Platform super-admin panel",
-      "status": "planned",
+      "status": "done",
       "priority": 4,
       "dependencies": ["feat-002", "feat-003"],
       "acceptance_criteria": [
@@ -99,7 +99,7 @@
         "Platform-wide analytics",
         "Subscription plan management"
       ],
-      "evidence": ""
+      "evidence": "Platform admin panel at /admin with PLATFORM_ADMIN role guard. Sidebar with Overview and Tenants. Overview shows active/suspended/pending counts and recent tenant list. Tenant management page with full tenant table, inline status dropdown, and create tenant form with plan selection. API protected with requireRole('PLATFORM_ADMIN')."
     }
   ]
 }

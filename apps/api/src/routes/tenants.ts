@@ -10,7 +10,9 @@ const createTenantSchema = z.object({
 })
 
 export async function tenantRoutes(app: FastifyInstance) {
-  app.get('/', async (request) => {
+  app.get('/', {
+    preHandler: [app.authenticate, app.requireRole('PLATFORM_ADMIN')],
+  }, async (request) => {
     const tenants = await request.server.prisma.tenant.findMany({
       orderBy: { createdAt: 'desc' },
     })
@@ -25,13 +27,31 @@ export async function tenantRoutes(app: FastifyInstance) {
     return reply.status(201).send({ data: tenant })
   })
 
-  app.get('/:id', async (request) => {
+  app.get('/:id', {
+    preHandler: [app.authenticate, app.requireRole('PLATFORM_ADMIN')],
+  }, async (request) => {
     const { id } = request.params as { id: string }
     const tenant = await request.server.prisma.tenant.findUnique({ where: { id } })
     if (!tenant) {
       throw new Error('Tenant not found')
     }
     return { data: tenant }
+  })
+
+  app.patch('/:id/status', {
+    preHandler: [app.authenticate, app.requireRole('PLATFORM_ADMIN')],
+  }, async (request, reply) => {
+    const { id } = request.params as { id: string }
+    const body = request.body as { status: string }
+    const validStatuses = ['ACTIVE', 'SUSPENDED', 'PENDING']
+    if (!validStatuses.includes(body.status)) {
+      return reply.status(400).send({ error: 'Invalid status' })
+    }
+    const updated = await request.server.prisma.tenant.update({
+      where: { id },
+      data: { status: body.status as 'ACTIVE' | 'SUSPENDED' | 'PENDING' },
+    })
+    return { data: updated }
   })
 
   app.get('/me/products', {
