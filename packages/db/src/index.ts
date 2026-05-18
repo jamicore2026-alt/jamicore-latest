@@ -1,3 +1,6 @@
 export { createPrismaClient, prisma } from './client.js'
 export { provisionTenant } from './tenant-provision.js'
 export * from '../../.generated/prisma-client/index.js'
+export { createDrizzleClient, db } from './drizzle/index.js'
+export type { DrizzleClient } from './drizzle/index.js'
+export * as schema from './drizzle/schema.js'

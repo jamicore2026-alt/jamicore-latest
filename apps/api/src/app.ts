@@ -7,6 +7,7 @@ import { dbPlugin } from './plugins/database.js'
 import { tenantPlugin } from './plugins/tenant.js'
 import { authPlugin } from './plugins/auth.js'
 import { rbacPlugin } from './plugins/rbac.js'
+import { storePlugin } from './plugins/store.js'
 import { healthRoutes } from './routes/health.js'
 import { tenantRoutes } from './routes/tenants.js'
 import { authRoutes } from './routes/auth.js'
@@ -16,6 +17,10 @@ import { cartRoutes } from './routes/cart.js'
 import { orderRoutes } from './routes/orders.js'
 import { paymentRoutes } from './routes/payments.js'
 import { webhookRoutes } from './routes/webhook.js'
+import { publicRoutes } from './routes/v2/public.js'
+import { merchantRoutes } from './routes/v2/merchant.js'
+import { customerRoutes } from './routes/v2/customer.js'
+import { superadminRoutes } from './routes/v2/superadmin.js'
 
 export async function build() {
   const app = fastify({
@@ -40,6 +45,7 @@ export async function build() {
   await app.register(authPlugin)
   await app.register(rbacPlugin)
   await app.register(tenantPlugin)
+  await app.register(storePlugin)
   await app.register(healthRoutes, { prefix: '/health' })
   await app.register(authRoutes, { prefix: '/api/v1/auth' })
   await app.register(tenantRoutes, { prefix: '/api/v1/tenants' })
@@ -49,6 +55,10 @@ export async function build() {
   await app.register(orderRoutes, { prefix: '/api/v1/orders' })
   await app.register(paymentRoutes, { prefix: '/api/v1/payments' })
   await app.register(webhookRoutes, { prefix: '/webhooks' })
+  await app.register(publicRoutes, { prefix: '/api/v2' })
+  await app.register(merchantRoutes, { prefix: '/api/v2/merchant' })
+  await app.register(customerRoutes, { prefix: '/api/v2/customer' })
+  await app.register(superadminRoutes, { prefix: '/api/v2/admin' })
 
   return app
 }

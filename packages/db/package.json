@@ -5,12 +5,29 @@
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./drizzle/schema.js": {
+      "import": "./dist/drizzle/schema.js",
+      "types": "./dist/drizzle/schema.d.ts"
+    },
+    "./drizzle/index.js": {
+      "import": "./dist/drizzle/index.js",
+      "types": "./dist/drizzle/index.d.ts"
+    }
+  },
   "scripts": {
     "build": "tsc",
     "db:generate": "prisma generate",
     "db:migrate": "prisma migrate deploy",
     "db:studio": "prisma studio",
     "db:seed": "tsx src/seed.ts",
+    "db:drizzle:generate": "drizzle-kit generate",
+    "db:drizzle:migrate": "drizzle-kit migrate",
+    "db:drizzle:studio": "drizzle-kit studio",
     "dev": "tsc --watch",
     "lint": "eslint src",
     "typecheck": "tsc --noEmit"
@@ -18,15 +35,18 @@
   "dependencies": {
     "@prisma/adapter-pg": "^7.8.0",
     "@prisma/client": "^7.8.0",
-    "pg": "^8.16.0"
+    "@types/pg": "^8.20.0",
+    "drizzle-orm": "^0.45.2",
+    "pg": "^8.20.0"
   },
   "devDependencies": {
     "@jamicore/eslint-config": "workspace:*",
     "@jamicore/tsconfig": "workspace:*",
-    "@types/node": "^22.15.0",
     "@prisma/config": "^7.8.0",
-    "eslint": "^9.26.0",
+    "@types/node": "^22.15.0",
     "dotenv": "^17.4.2",
+    "drizzle-kit": "^0.31.10",
+    "eslint": "^9.26.0",
     "prisma": "^7.8.0",
     "tsx": "^4.19.0",
     "typescript": "^5.8.3"
