@@ -1,9 +1,11 @@
 import { FastifyInstance } from 'fastify'
 import Stripe from 'stripe'
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || '', {
-  apiVersion: '2026-04-22.dahlia',
-})
+function getStripe() {
+  return new Stripe(process.env.STRIPE_SECRET_KEY || '', {
+    apiVersion: '2026-04-22.dahlia',
+  })
+}
 
 export async function paymentRoutes(app: FastifyInstance) {
   app.addHook('preHandler', app.authenticate)
@@ -78,7 +80,7 @@ export async function paymentRoutes(app: FastifyInstance) {
     })
 
     const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'
-    const session = await stripe.checkout.sessions.create({
+    const session = await getStripe().checkout.sessions.create({
       line_items: lineItems,
       mode: 'payment',
       success_url: `${baseUrl}/dashboard/orders?success=1`,

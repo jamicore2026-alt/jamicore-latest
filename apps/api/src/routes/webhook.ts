@@ -1,9 +1,11 @@
 import { FastifyInstance } from 'fastify'
 import Stripe from 'stripe'
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || '', {
-  apiVersion: '2026-04-22.dahlia',
-})
+function getStripe() {
+  return new Stripe(process.env.STRIPE_SECRET_KEY || '', {
+    apiVersion: '2026-04-22.dahlia',
+  })
+}
 
 export async function webhookRoutes(app: FastifyInstance) {
   app.post('/stripe', {
@@ -20,7 +22,7 @@ export async function webhookRoutes(app: FastifyInstance) {
 
     let event: Stripe.Event
     try {
-      event = stripe.webhooks.constructEvent(payload, sig, secret)
+      event = getStripe().webhooks.constructEvent(payload, sig, secret)
     } catch (err: unknown) {
       const message = err instanceof Error ? err.message : 'Unknown error'
       return reply.status(400).send({ error: `Webhook Error: ${message}` })
