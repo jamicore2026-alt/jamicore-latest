@@ -145,4 +145,29 @@
 - All builds, typechecks, tests, lint pass clean
 - Committed and pushed to `origin/main`
 
+### 2026-05-18 — Phase 8: Drizzle ORM migration and v2 API
+- Installed Drizzle ORM 0.45.2, drizzle-kit 0.31.10, pg 8.20.0
+- Created `drizzle.config.ts` with PostgreSQL dialect
+- Built 30-table Drizzle schema with enums, indexes, relations:
+  - Core: stores, users, customers, products, categories, subcategories
+  - Commerce: orders, order_items, carts, cart_items, wishlists, wishlist_items, reviews
+  - Merchandising: modifier_groups, modifier_options, product_modifier_links
+  - Marketing: coupons, email_templates
+  - Shipping: shipping_zones, shipping_rates
+  - Tax: tax_rates
+  - Platform: super_admins, merchant_plans, verification_tokens, staff_invitations, role_permissions
+  - Analytics: store_analytics, activity_logs
+- Generated Drizzle migration (`drizzle/0000_swift_susan_delgado.sql`)
+- Created Drizzle client with connection pooling and global singleton cache
+- Built Fastify store plugin resolving tenant from subdomain or `x-store-slug` header
+- Implemented v2 Public API (10 endpoints): store, products, categories, search, cart, guest checkout, shipping zones, tax rates
+- Implemented v2 Merchant API (16 endpoints): auth, store settings, products CRUD, categories, orders, customers, analytics, coupons
+- Implemented v2 Customer API (12 endpoints): auth, profile, orders, wishlist, reviews, addresses
+- Implemented v2 SuperAdmin API (7 endpoints): auth, merchants, plans, stores, platform analytics
+- Registered all v2 routes in `apps/api/src/app.ts`
+- Updated `@jamicore/db` exports and package.json with Drizzle paths
+- All builds, typechecks, tests, lint pass clean
+- Committed and pushed to `origin/main`
+- Drizzle Studio running on `https://local.drizzle.studio`
+
 ## Project complete — JamiCore E-Commerce SaaS v1.0

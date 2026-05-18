@@ -100,6 +100,23 @@
         "Subscription plan management"
       ],
       "evidence": "Platform admin panel at /admin with PLATFORM_ADMIN role guard. Sidebar with Overview and Tenants. Overview shows active/suspended/pending counts and recent tenant list. Tenant management page with full tenant table, inline status dropdown, and create tenant form with plan selection. API protected with requireRole('PLATFORM_ADMIN')."
+    },
+    {
+      "id": "feat-008",
+      "name": "Drizzle ORM migration and v2 API",
+      "status": "done",
+      "priority": 5,
+      "dependencies": ["feat-001", "feat-002", "feat-003"],
+      "acceptance_criteria": [
+        "30-table Drizzle schema with relations and indexes",
+        "Drizzle migration generated",
+        "Drizzle client with connection pooling",
+        "v2 Public API (store, products, cart, checkout, shipping, tax)",
+        "v2 Merchant API (auth, products, orders, customers, analytics, coupons)",
+        "v2 Customer API (auth, profile, orders, wishlist, reviews, addresses)",
+        "v2 SuperAdmin API (auth, merchants, plans, stores, analytics)"
+      ],
+      "evidence": "Drizzle ORM 0.45.2 with 30-table schema covering all e-commerce entities. Migration generated at drizzle/0000_swift_susan_delgado.sql. Store plugin for subdomain/header resolution. 45 v2 endpoints across 4 namespaces. All typecheck, test, lint, build pass clean."
     }
   ]
 }
