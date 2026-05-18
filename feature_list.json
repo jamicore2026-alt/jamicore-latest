@@ -35,7 +35,7 @@
     {
       "id": "feat-003",
       "name": "Authentication and authorization",
-      "status": "planned",
+      "status": "done",
       "priority": 2,
       "dependencies": ["feat-001", "feat-002"],
       "acceptance_criteria": [
@@ -44,7 +44,7 @@
         "Role-based access control (platform admin, merchant admin, customer)",
         "Password hashing and security headers"
       ],
-      "evidence": ""
+      "evidence": "Auth.js v5 credentials provider with bcrypt hashing. JWT strategy with role in token. Fastify JWT plugin for API auth. RBAC middleware with requireRole(). Login and register pages in Next.js."
     },
     {
       "id": "feat-004",

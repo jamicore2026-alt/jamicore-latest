@@ -34,4 +34,29 @@
 - Added tenant provisioning endpoint: `POST /api/v1/tenants`
 - All builds, typechecks, tests, lint pass clean
 
-## Next: Phase 3 — Authentication and authorization
+### 2026-05-18 — Phase 3: Authentication and authorization
+- Updated `@jamicore/auth` package:
+  - Replaced Prisma adapter with Credentials provider + JWT strategy
+  - Added bcrypt password hashing (12 rounds)
+  - Added zod validation for credentials
+  - Extended NextAuth types with `role` field
+  - Configured custom login/register pages
+- Created Fastify auth plugin (`plugins/auth.ts`):
+  - `@fastify/jwt` for token verification
+  - `authenticate` decorator for route preHandler
+  - `authUser` property on request with sub, email, name, role
+- Created Fastify RBAC plugin (`plugins/rbac.ts`):
+  - `requireRole(...roles)` decorator for role-based access control
+- Created auth API routes (`routes/auth.ts`):
+  - `POST /api/v1/auth/register` — register new user with hashed password
+  - `POST /api/v1/auth/login` — validate credentials and return JWT
+  - `GET /api/v1/auth/me` — get current authenticated user
+- Protected tenant routes:
+  - `POST /api/v1/tenants` → PLATFORM_ADMIN only
+  - `GET /api/v1/tenants/me/products` → authenticated users
+- Created Next.js pages:
+  - `/login` — server action with Auth.js `signIn`
+  - `/register` — client-side form calling API registration endpoint
+- All builds, typechecks, tests, lint pass clean
+
+## Next: Phase 4 — Product catalog and inventory

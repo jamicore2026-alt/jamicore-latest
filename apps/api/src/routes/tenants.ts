@@ -17,7 +17,9 @@ export async function tenantRoutes(app: FastifyInstance) {
     return { data: tenants }
   })
 
-  app.post('/', async (request, reply) => {
+  app.post('/', {
+    preHandler: [app.authenticate, app.requireRole('PLATFORM_ADMIN')],
+  }, async (request, reply) => {
     const body = createTenantSchema.parse(request.body)
     const tenant = await provisionTenant(body)
     return reply.status(201).send({ data: tenant })
@@ -32,7 +34,9 @@ export async function tenantRoutes(app: FastifyInstance) {
     return { data: tenant }
   })
 
-  app.get('/me/products', async (request, reply) => {
+  app.get('/me/products', {
+    preHandler: [app.authenticate],
+  }, async (request, reply) => {
     if (!request.tenant || !request.tenantPrisma) {
       return reply.status(404).send({ error: 'Tenant not found' })
     }
