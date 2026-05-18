@@ -24,6 +24,11 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Generate Prisma client
+        run: pnpm db:generate
+        env:
+          DATABASE_URL: postgresql://jamicore:jamicore@localhost:5432/jamicore
+
       - name: Lint
         run: pnpm lint
 
