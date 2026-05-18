@@ -2,12 +2,13 @@
   "name": "@jamicore/ui",
   "version": "0.0.0",
   "private": true,
+  "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
     "build": "tsc",
     "dev": "tsc --watch",
-    "lint": "eslint src/**/*.ts src/**/*.tsx",
+    "lint": "eslint src",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
@@ -17,8 +18,10 @@
     "tailwind-merge": "^3.3.0"
   },
   "devDependencies": {
+    "@jamicore/eslint-config": "workspace:*",
     "@jamicore/tsconfig": "workspace:*",
     "@types/react": "^19.1.0",
+    "eslint": "^9.26.0",
     "@types/react-dom": "^19.1.0",
     "tailwindcss": "^4.3.0",
     "typescript": "^5.8.3"

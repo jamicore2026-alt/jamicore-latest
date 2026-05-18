@@ -3,9 +3,9 @@ import cors from '@fastify/cors'
 import helmet from '@fastify/helmet'
 import swagger from '@fastify/swagger'
 import swaggerUi from '@fastify/swagger-ui'
-import { dbPlugin } from './plugins/database'
-import { healthRoutes } from './routes/health'
-import { tenantRoutes } from './routes/tenants'
+import { dbPlugin } from './plugins/database.js'
+import { healthRoutes } from './routes/health.js'
+import { tenantRoutes } from './routes/tenants.js'
 
 export async function build() {
   const app = fastify({

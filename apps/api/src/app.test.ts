@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { build } from './app'
+import { build } from './app.js'
 
 describe('API', () => {
   it('health check returns ok', async () => {

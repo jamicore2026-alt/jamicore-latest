@@ -2,6 +2,7 @@
   "name": "@jamicore/db",
   "version": "0.0.0",
   "private": true,
+  "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
@@ -11,7 +12,7 @@
     "db:studio": "prisma studio",
     "db:seed": "tsx src/seed.ts",
     "dev": "tsc --watch",
-    "lint": "eslint src/**/*.ts",
+    "lint": "eslint src",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
@@ -20,9 +21,11 @@
     "pg": "^8.16.0"
   },
   "devDependencies": {
+    "@jamicore/eslint-config": "workspace:*",
     "@jamicore/tsconfig": "workspace:*",
     "@types/node": "^22.15.0",
     "@prisma/config": "^7.8.0",
+    "eslint": "^9.26.0",
     "dotenv": "^17.4.2",
     "prisma": "^7.8.0",
     "tsx": "^4.19.0",

@@ -2,12 +2,13 @@
   "name": "@jamicore/auth",
   "version": "0.0.0",
   "private": true,
+  "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
     "build": "tsc",
     "dev": "tsc --watch",
-    "lint": "eslint src/**/*.ts",
+    "lint": "eslint src",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
@@ -16,8 +17,10 @@
     "@jamicore/db": "workspace:*"
   },
   "devDependencies": {
+    "@jamicore/eslint-config": "workspace:*",
     "@jamicore/tsconfig": "workspace:*",
     "@types/node": "^22.15.0",
+    "eslint": "^9.26.0",
     "@types/react": "^19.1.0",
     "@types/react-dom": "^19.1.0",
     "typescript": "^5.8.3"

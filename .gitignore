@@ -30,3 +30,7 @@ Thumbs.db
 # Docker
 postgres_data
 redis_data
+
+# Turbo cache
+.turbo/
+dist/

@@ -1,4 +1,4 @@
-import { build } from './app'
+import { build } from './app.js'
 
 async function main() {
   const app = await build()

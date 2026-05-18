@@ -2,12 +2,7 @@ import NextAuth from 'next-auth'
 import { PrismaAdapter } from '@auth/prisma-adapter'
 import { prisma } from '@jamicore/db'
 
-export const {
-  handlers: { GET, POST },
-  auth,
-  signIn,
-  signOut,
-} = NextAuth({
+const nextAuth = NextAuth({
   adapter: PrismaAdapter(prisma),
   providers: [],
   session: { strategy: 'jwt' },
@@ -20,3 +15,10 @@ export const {
     },
   },
 })
+
+export const handlers = nextAuth.handlers
+export const GET = handlers.GET
+export const POST = handlers.POST
+export const auth: typeof nextAuth.auth = nextAuth.auth
+export const signIn: typeof nextAuth.signIn = nextAuth.signIn
+export const signOut: typeof nextAuth.signOut = nextAuth.signOut
