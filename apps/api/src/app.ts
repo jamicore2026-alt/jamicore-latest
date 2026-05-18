@@ -14,6 +14,8 @@ import { productRoutes } from './routes/products.js'
 import { categoryRoutes } from './routes/categories.js'
 import { cartRoutes } from './routes/cart.js'
 import { orderRoutes } from './routes/orders.js'
+import { paymentRoutes } from './routes/payments.js'
+import { webhookRoutes } from './routes/webhook.js'
 
 export async function build() {
   const app = fastify({
@@ -45,6 +47,8 @@ export async function build() {
   await app.register(categoryRoutes, { prefix: '/api/v1/categories' })
   await app.register(cartRoutes, { prefix: '/api/v1/cart' })
   await app.register(orderRoutes, { prefix: '/api/v1/orders' })
+  await app.register(paymentRoutes, { prefix: '/api/v1/payments' })
+  await app.register(webhookRoutes, { prefix: '/webhooks' })
 
   return app
 }

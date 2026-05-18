@@ -126,4 +126,23 @@
 - All builds, typechecks, tests, lint pass clean
 - Committed and pushed to `origin/main`
 
-## Next: Phase 7 — Payment integration and final polish
+### 2026-05-18 — Phase 7: Stripe payment integration and final polish
+- Updated Prisma schema with `PaymentStatus` enum (PENDING, PAID, FAILED, REFUNDED)
+- Added `stripeSessionId` field to `Order` model and updated tenant provisioning SQL
+- Installed Stripe SDK v22.1.1 in API package
+- Created Stripe checkout API (`routes/payments.ts`):
+  - `POST /api/v1/payments/checkout` — creates order in transaction, generates Stripe Checkout session with line items from cart, stores `stripeSessionId`
+  - Redirects customer to Stripe hosted checkout page
+  - Success URL: `/dashboard/orders?success=1`, Cancel URL: `/cart?canceled=1`
+- Created Stripe webhook handler (`routes/webhook.ts`):
+  - `POST /webhooks/stripe` — verifies Stripe signature, updates order `paymentStatus` to PAID and `status` to CONFIRMED on `checkout.session.completed`
+  - Uses dynamic Prisma client with tenant schema from metadata
+- Updated cart page to call `/api/v1/payments/checkout` and redirect to Stripe
+- Updated orders page with:
+  - Payment status badges (PENDING, PAID, FAILED, REFUNDED)
+  - Success banner after Stripe redirect
+  - Status update dropdown for merchants
+- All builds, typechecks, tests, lint pass clean
+- Committed and pushed to `origin/main`
+
+## Project complete — JamiCore E-Commerce SaaS v1.0

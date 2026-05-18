@@ -72,7 +72,7 @@
         "Basic payment integration (Stripe or Razorpay)",
         "Order history for customers"
       ],
-      "evidence": "Cart API with GET, POST add item, PATCH quantity, DELETE item, DELETE clear. Order API with POST create from cart (transactional stock decrement), GET list with role-based filtering, GET detail, PATCH status. Auth plugin updated to read Auth.js session cookie for cross-origin auth. Cart UI page with quantity controls, remove, clear, checkout. Merchant orders page with status update dropdown."
+      "evidence": "Cart API with GET, POST add item, PATCH quantity, DELETE item, DELETE clear. Order API with GET list, GET detail, PATCH status. Stripe Checkout integration: POST /api/v1/payments/checkout creates Stripe session and order in transaction, webhook /webhooks/stripe updates paymentStatus to PAID on success. PaymentStatus enum added to schema. Cart checkout redirects to Stripe. Orders page shows payment status badges."
     },
     {
       "id": "feat-006",

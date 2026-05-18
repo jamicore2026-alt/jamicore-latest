@@ -1,7 +1,6 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { useRouter } from 'next/navigation'
 
 interface CartItem {
   id: string
@@ -17,7 +16,6 @@ interface CartItem {
 }
 
 export default function CartPage() {
-  const router = useRouter()
   const [items, setItems] = useState<CartItem[]>([])
   const [total, setTotal] = useState(0)
   const [loading, setLoading] = useState(true)
@@ -75,7 +73,7 @@ export default function CartPage() {
 
   async function checkout() {
     setCheckingOut(true)
-    const res = await fetch('http://localhost:3001/api/v1/orders', {
+    const res = await fetch('http://localhost:3001/api/v1/payments/checkout', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -84,8 +82,12 @@ export default function CartPage() {
       credentials: 'include',
     })
     if (res.ok) {
-      await res.json()
-      router.push(`/dashboard/orders`)
+      const data = await res.json()
+      if (data.url) {
+        window.location.href = data.url
+      } else {
+        window.location.href = '/dashboard/orders'
+      }
     } else {
       const data = await res.json()
       alert(data.error || 'Checkout failed')

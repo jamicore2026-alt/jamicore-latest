@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import { useSearchParams } from 'next/navigation'
 
 interface OrderItem {
   id: string
@@ -13,6 +14,7 @@ interface OrderItem {
 interface Order {
   id: string
   status: string
+  paymentStatus: string
   total: number
   userId: string
   createdAt: string
@@ -27,10 +29,19 @@ const statusColors: Record<string, string> = {
   CANCELLED: 'bg-red-100 text-red-700',
 }
 
+const paymentColors: Record<string, string> = {
+  PENDING: 'bg-gray-100 text-gray-700',
+  PAID: 'bg-green-100 text-green-700',
+  FAILED: 'bg-red-100 text-red-700',
+  REFUNDED: 'bg-orange-100 text-orange-700',
+}
+
 export default function OrdersPage() {
   const [orders, setOrders] = useState<Order[]>([])
   const [loading, setLoading] = useState(true)
   const [updating, setUpdating] = useState<string | null>(null)
+  const searchParams = useSearchParams()
+  const success = searchParams.get('success')
 
   async function load() {
     const res = await fetch('http://localhost:3001/api/v1/orders', {
@@ -67,6 +78,10 @@ export default function OrdersPage() {
     <div className="space-y-6">
       <h1 className="text-2xl font-bold text-brand-900">Orders</h1>
 
+      {success && (
+        <div className="rounded-md bg-green-50 p-3 text-sm text-green-700">Payment successful! Your order has been confirmed.</div>
+      )}
+
       {loading ? (
         <p className="text-gray-500">Loading...</p>
       ) : orders.length === 0 ? (
@@ -80,7 +95,10 @@ export default function OrdersPage() {
                   <p className="text-sm font-medium text-gray-900">Order #{order.id.slice(0, 8)}</p>
                   <p className="text-xs text-gray-500">{new Date(order.createdAt).toLocaleString()}</p>
                 </div>
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-2">
+                  <span className={`rounded-full px-2 py-1 text-xs font-medium ${paymentColors[order.paymentStatus] || 'bg-gray-100 text-gray-700'}`}>
+                    {order.paymentStatus}
+                  </span>
                   <span className={`rounded-full px-2 py-1 text-xs font-medium ${statusColors[order.status] || 'bg-gray-100 text-gray-700'}`}>
                     {order.status}
                   </span>

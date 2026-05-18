@@ -44,14 +44,17 @@ CREATE UNIQUE INDEX IF NOT EXISTS "Category_slug_key" ON "Category"("slug");
 CREATE TABLE IF NOT EXISTS "Order" (
     "id" TEXT NOT NULL,
     "status" "OrderStatus" NOT NULL DEFAULT 'PENDING',
+    "paymentStatus" "PaymentStatus" NOT NULL DEFAULT 'PENDING',
     "total" DECIMAL(10,2) NOT NULL,
     "userId" TEXT NOT NULL,
+    "stripeSessionId" TEXT,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
     CONSTRAINT "Order_pkey" PRIMARY KEY ("id")
 );
 CREATE INDEX IF NOT EXISTS "Order_status_idx" ON "Order"("status");
 CREATE INDEX IF NOT EXISTS "Order_userId_idx" ON "Order"("userId");
+CREATE INDEX IF NOT EXISTS "Order_paymentStatus_idx" ON "Order"("paymentStatus");
 
 CREATE TABLE IF NOT EXISTS "OrderItem" (
     "id" TEXT NOT NULL,
@@ -124,6 +127,9 @@ export async function provisionTenant(input: {
         END IF;
         IF NOT EXISTS (SELECT 1 FROM pg_type WHERE typname = 'orderstatus') THEN
           CREATE TYPE "OrderStatus" AS ENUM ('PENDING', 'CONFIRMED', 'SHIPPED', 'DELIVERED', 'CANCELLED');
+        END IF;
+        IF NOT EXISTS (SELECT 1 FROM pg_type WHERE typname = 'paymentstatus') THEN
+          CREATE TYPE "PaymentStatus" AS ENUM ('PENDING', 'PAID', 'FAILED', 'REFUNDED');
         END IF;
       END $$;
     `)
