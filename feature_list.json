@@ -49,7 +49,7 @@
     {
       "id": "feat-004",
       "name": "Product catalog and inventory",
-      "status": "planned",
+      "status": "done",
       "priority": 3,
       "dependencies": ["feat-002", "feat-003"],
       "acceptance_criteria": [
@@ -58,12 +58,12 @@
         "Inventory tracking",
         "Product search and filtering"
       ],
-      "evidence": ""
+      "evidence": "Products API with full CRUD, search, filter, pagination. Categories API with tenant scoping. Merchant dashboard with sidebar auth guard. Dashboard pages: products list, new product form, category list with inline add. Typecheck, test, lint, build all pass."
     },
     {
       "id": "feat-005",
       "name": "Shopping cart and checkout",
-      "status": "planned",
+      "status": "done",
       "priority": 3,
       "dependencies": ["feat-004"],
       "acceptance_criteria": [
@@ -72,7 +72,7 @@
         "Basic payment integration (Stripe or Razorpay)",
         "Order history for customers"
       ],
-      "evidence": ""
+      "evidence": "Cart API with GET, POST add item, PATCH quantity, DELETE item, DELETE clear. Order API with POST create from cart (transactional stock decrement), GET list with role-based filtering, GET detail, PATCH status. Auth plugin updated to read Auth.js session cookie for cross-origin auth. Cart UI page with quantity controls, remove, clear, checkout. Merchant orders page with status update dropdown."
     },
     {
       "id": "feat-006",

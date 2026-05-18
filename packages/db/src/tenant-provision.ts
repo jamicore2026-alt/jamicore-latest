@@ -51,6 +51,38 @@ CREATE TABLE IF NOT EXISTS "Order" (
     CONSTRAINT "Order_pkey" PRIMARY KEY ("id")
 );
 CREATE INDEX IF NOT EXISTS "Order_status_idx" ON "Order"("status");
+CREATE INDEX IF NOT EXISTS "Order_userId_idx" ON "Order"("userId");
+
+CREATE TABLE IF NOT EXISTS "OrderItem" (
+    "id" TEXT NOT NULL,
+    "orderId" TEXT NOT NULL,
+    "productId" TEXT NOT NULL,
+    "quantity" INTEGER NOT NULL,
+    "price" DECIMAL(10,2) NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT "OrderItem_pkey" PRIMARY KEY ("id")
+);
+CREATE INDEX IF NOT EXISTS "OrderItem_orderId_idx" ON "OrderItem"("orderId");
+
+CREATE TABLE IF NOT EXISTS "Cart" (
+    "id" TEXT NOT NULL,
+    "userId" TEXT NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+    CONSTRAINT "Cart_pkey" PRIMARY KEY ("id")
+);
+CREATE UNIQUE INDEX IF NOT EXISTS "Cart_userId_key" ON "Cart"("userId");
+
+CREATE TABLE IF NOT EXISTS "CartItem" (
+    "id" TEXT NOT NULL,
+    "cartId" TEXT NOT NULL,
+    "productId" TEXT NOT NULL,
+    "quantity" INTEGER NOT NULL DEFAULT 1,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+    CONSTRAINT "CartItem_pkey" PRIMARY KEY ("id")
+);
+CREATE INDEX IF NOT EXISTS "CartItem_cartId_idx" ON "CartItem"("cartId");
 `
 
 export async function provisionTenant(input: {

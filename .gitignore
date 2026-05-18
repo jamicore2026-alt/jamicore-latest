@@ -34,3 +34,6 @@ redis_data
 # Turbo cache
 .turbo/
 dist/
+
+# Generated
+.generated/
