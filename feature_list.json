@@ -1,0 +1,105 @@
+{
+  "version": "1.0",
+  "features": [
+    {
+      "id": "feat-001",
+      "name": "Project scaffold and stack setup",
+      "status": "done",
+      "priority": 1,
+      "dependencies": [],
+      "acceptance_criteria": [
+        "Monorepo structure with pnpm workspaces defined",
+        "Backend Fastify server scaffolded with health check",
+        "Frontend Next.js app scaffolded with basic layout",
+        "Database connection with Prisma and initial migration",
+        "Docker Compose for local PostgreSQL + Redis",
+        "GitHub Actions CI pipeline configured",
+        "All builds and type checks pass"
+      ],
+      "evidence": "pnpm install, pnpm build, pnpm typecheck, pnpm test, pnpm lint all pass clean. Next.js 16.2.6, Fastify 5.8.5, Prisma 7.8.0, Tailwind 4.3.0, Auth.js 5 beta.31."
+    },
+    {
+      "id": "feat-002",
+      "name": "Multi-tenancy core architecture",
+      "status": "planned",
+      "priority": 2,
+      "dependencies": ["feat-001"],
+      "acceptance_criteria": [
+        "Tenant isolation strategy implemented (schema-per-tenant or RLS)",
+        "Tenant provisioning API",
+        "Subdomain or path-based tenant routing",
+        "Tenant context middleware in Fastify"
+      ],
+      "evidence": ""
+    },
+    {
+      "id": "feat-003",
+      "name": "Authentication and authorization",
+      "status": "planned",
+      "priority": 2,
+      "dependencies": ["feat-001", "feat-002"],
+      "acceptance_criteria": [
+        "User registration and login",
+        "JWT or session-based auth",
+        "Role-based access control (platform admin, merchant admin, customer)",
+        "Password hashing and security headers"
+      ],
+      "evidence": ""
+    },
+    {
+      "id": "feat-004",
+      "name": "Product catalog and inventory",
+      "status": "planned",
+      "priority": 3,
+      "dependencies": ["feat-002", "feat-003"],
+      "acceptance_criteria": [
+        "Product CRUD for merchants",
+        "Categories and tags",
+        "Inventory tracking",
+        "Product search and filtering"
+      ],
+      "evidence": ""
+    },
+    {
+      "id": "feat-005",
+      "name": "Shopping cart and checkout",
+      "status": "planned",
+      "priority": 3,
+      "dependencies": ["feat-004"],
+      "acceptance_criteria": [
+        "Cart management API",
+        "Order creation flow",
+        "Basic payment integration (Stripe or Razorpay)",
+        "Order history for customers"
+      ],
+      "evidence": ""
+    },
+    {
+      "id": "feat-006",
+      "name": "Merchant admin dashboard",
+      "status": "planned",
+      "priority": 4,
+      "dependencies": ["feat-002", "feat-003"],
+      "acceptance_criteria": [
+        "Dashboard layout with navigation",
+        "Sales analytics overview",
+        "Order management UI",
+        "Product management UI"
+      ],
+      "evidence": ""
+    },
+    {
+      "id": "feat-007",
+      "name": "Platform super-admin panel",
+      "status": "planned",
+      "priority": 4,
+      "dependencies": ["feat-002", "feat-003"],
+      "acceptance_criteria": [
+        "Tenant management (approve, suspend, configure)",
+        "Platform-wide analytics",
+        "Subscription plan management"
+      ],
+      "evidence": ""
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "name": "@jamicore/tsconfig",
+  "version": "0.0.0",
+  "private": true,
+  "files": ["*.json"],
+  "scripts": {}
+}

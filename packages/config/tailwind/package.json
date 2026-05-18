@@ -1,0 +1,10 @@
+{
+  "name": "@jamicore/tailwind-config",
+  "version": "0.0.0",
+  "private": true,
+  "files": ["*.css"],
+  "scripts": {},
+  "devDependencies": {
+    "tailwindcss": "^4.1.6"
+  }
+}
