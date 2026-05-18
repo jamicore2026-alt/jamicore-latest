@@ -8,6 +8,7 @@ async function main() {
       domain: 'demo.localhost',
       status: 'ACTIVE',
       plan: 'pro',
+      dbSchema: 'tenant_demo',
     },
   })
 

@@ -127,6 +127,7 @@ exports.Prisma.TenantScalarFieldEnum = {
   domain: 'domain',
   status: 'status',
   plan: 'plan',
+  dbSchema: 'dbSchema',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -137,7 +138,6 @@ exports.Prisma.UserScalarFieldEnum = {
   password: 'password',
   name: 'name',
   role: 'role',
-  tenantId: 'tenantId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -149,7 +149,6 @@ exports.Prisma.ProductScalarFieldEnum = {
   description: 'description',
   price: 'price',
   stock: 'stock',
-  tenantId: 'tenantId',
   categoryId: 'categoryId',
   isActive: 'isActive',
   createdAt: 'createdAt',
@@ -160,7 +159,6 @@ exports.Prisma.CategoryScalarFieldEnum = {
   id: 'id',
   name: 'name',
   slug: 'slug',
-  tenantId: 'tenantId',
   parentId: 'parentId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -170,7 +168,6 @@ exports.Prisma.OrderScalarFieldEnum = {
   id: 'id',
   status: 'status',
   total: 'total',
-  tenantId: 'tenantId',
   userId: 'userId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'

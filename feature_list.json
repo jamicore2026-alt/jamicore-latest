@@ -21,7 +21,7 @@
     {
       "id": "feat-002",
       "name": "Multi-tenancy core architecture",
-      "status": "planned",
+      "status": "done",
       "priority": 2,
       "dependencies": ["feat-001"],
       "acceptance_criteria": [
@@ -30,7 +30,7 @@
         "Subdomain or path-based tenant routing",
         "Tenant context middleware in Fastify"
       ],
-      "evidence": ""
+      "evidence": "Schema-per-tenant with PrismaPg adapter. Tenant middleware resolves from subdomain/x-tenant-id header. Provisioning creates schema + tables via raw SQL. Tenant-scoped product endpoint at /api/v1/tenants/me/products."
     },
     {
       "id": "feat-003",

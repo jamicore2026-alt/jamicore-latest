@@ -4,6 +4,7 @@ import helmet from '@fastify/helmet'
 import swagger from '@fastify/swagger'
 import swaggerUi from '@fastify/swagger-ui'
 import { dbPlugin } from './plugins/database.js'
+import { tenantPlugin } from './plugins/tenant.js'
 import { healthRoutes } from './routes/health.js'
 import { tenantRoutes } from './routes/tenants.js'
 
@@ -27,6 +28,7 @@ export async function build() {
   await app.register(swaggerUi, { routePrefix: '/docs' })
 
   await app.register(dbPlugin)
+  await app.register(tenantPlugin)
   await app.register(healthRoutes, { prefix: '/health' })
   await app.register(tenantRoutes, { prefix: '/api/v1/tenants' })
 

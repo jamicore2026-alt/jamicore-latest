@@ -1293,6 +1293,7 @@ export namespace Prisma {
     domain: string | null
     status: $Enums.TenantStatus | null
     plan: string | null
+    dbSchema: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -1304,6 +1305,7 @@ export namespace Prisma {
     domain: string | null
     status: $Enums.TenantStatus | null
     plan: string | null
+    dbSchema: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -1315,6 +1317,7 @@ export namespace Prisma {
     domain: number
     status: number
     plan: number
+    dbSchema: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -1328,6 +1331,7 @@ export namespace Prisma {
     domain?: true
     status?: true
     plan?: true
+    dbSchema?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -1339,6 +1343,7 @@ export namespace Prisma {
     domain?: true
     status?: true
     plan?: true
+    dbSchema?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -1350,6 +1355,7 @@ export namespace Prisma {
     domain?: true
     status?: true
     plan?: true
+    dbSchema?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -1434,6 +1440,7 @@ export namespace Prisma {
     domain: string | null
     status: $Enums.TenantStatus
     plan: string
+    dbSchema: string
     createdAt: Date
     updatedAt: Date
     _count: TenantCountAggregateOutputType | null
@@ -1462,6 +1469,7 @@ export namespace Prisma {
     domain?: boolean
     status?: boolean
     plan?: boolean
+    dbSchema?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["tenant"]>
@@ -1473,6 +1481,7 @@ export namespace Prisma {
     domain?: boolean
     status?: boolean
     plan?: boolean
+    dbSchema?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["tenant"]>
@@ -1484,6 +1493,7 @@ export namespace Prisma {
     domain?: boolean
     status?: boolean
     plan?: boolean
+    dbSchema?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["tenant"]>
@@ -1495,11 +1505,12 @@ export namespace Prisma {
     domain?: boolean
     status?: boolean
     plan?: boolean
+    dbSchema?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type TenantOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "slug" | "domain" | "status" | "plan" | "createdAt" | "updatedAt", ExtArgs["result"]["tenant"]>
+  export type TenantOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "slug" | "domain" | "status" | "plan" | "dbSchema" | "createdAt" | "updatedAt", ExtArgs["result"]["tenant"]>
 
   export type $TenantPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Tenant"
@@ -1511,6 +1522,7 @@ export namespace Prisma {
       domain: string | null
       status: $Enums.TenantStatus
       plan: string
+      dbSchema: string
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["tenant"]>
@@ -1942,6 +1954,7 @@ export namespace Prisma {
     readonly domain: FieldRef<"Tenant", 'String'>
     readonly status: FieldRef<"Tenant", 'TenantStatus'>
     readonly plan: FieldRef<"Tenant", 'String'>
+    readonly dbSchema: FieldRef<"Tenant", 'String'>
     readonly createdAt: FieldRef<"Tenant", 'DateTime'>
     readonly updatedAt: FieldRef<"Tenant", 'DateTime'>
   }
@@ -2331,7 +2344,6 @@ export namespace Prisma {
     password: string | null
     name: string | null
     role: $Enums.UserRole | null
-    tenantId: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -2342,7 +2354,6 @@ export namespace Prisma {
     password: string | null
     name: string | null
     role: $Enums.UserRole | null
-    tenantId: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -2353,7 +2364,6 @@ export namespace Prisma {
     password: number
     name: number
     role: number
-    tenantId: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -2366,7 +2376,6 @@ export namespace Prisma {
     password?: true
     name?: true
     role?: true
-    tenantId?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -2377,7 +2386,6 @@ export namespace Prisma {
     password?: true
     name?: true
     role?: true
-    tenantId?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -2388,7 +2396,6 @@ export namespace Prisma {
     password?: true
     name?: true
     role?: true
-    tenantId?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -2472,7 +2479,6 @@ export namespace Prisma {
     password: string | null
     name: string | null
     role: $Enums.UserRole
-    tenantId: string | null
     createdAt: Date
     updatedAt: Date
     _count: UserCountAggregateOutputType | null
@@ -2500,7 +2506,6 @@ export namespace Prisma {
     password?: boolean
     name?: boolean
     role?: boolean
-    tenantId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["user"]>
@@ -2511,7 +2516,6 @@ export namespace Prisma {
     password?: boolean
     name?: boolean
     role?: boolean
-    tenantId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["user"]>
@@ -2522,7 +2526,6 @@ export namespace Prisma {
     password?: boolean
     name?: boolean
     role?: boolean
-    tenantId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["user"]>
@@ -2533,12 +2536,11 @@ export namespace Prisma {
     password?: boolean
     name?: boolean
     role?: boolean
-    tenantId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "password" | "name" | "role" | "tenantId" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "password" | "name" | "role" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
 
   export type $UserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "User"
@@ -2549,7 +2551,6 @@ export namespace Prisma {
       password: string | null
       name: string | null
       role: $Enums.UserRole
-      tenantId: string | null
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["user"]>
@@ -2980,7 +2981,6 @@ export namespace Prisma {
     readonly password: FieldRef<"User", 'String'>
     readonly name: FieldRef<"User", 'String'>
     readonly role: FieldRef<"User", 'UserRole'>
-    readonly tenantId: FieldRef<"User", 'String'>
     readonly createdAt: FieldRef<"User", 'DateTime'>
     readonly updatedAt: FieldRef<"User", 'DateTime'>
   }
@@ -3383,7 +3383,6 @@ export namespace Prisma {
     description: string | null
     price: Decimal | null
     stock: number | null
-    tenantId: string | null
     categoryId: string | null
     isActive: boolean | null
     createdAt: Date | null
@@ -3397,7 +3396,6 @@ export namespace Prisma {
     description: string | null
     price: Decimal | null
     stock: number | null
-    tenantId: string | null
     categoryId: string | null
     isActive: boolean | null
     createdAt: Date | null
@@ -3411,7 +3409,6 @@ export namespace Prisma {
     description: number
     price: number
     stock: number
-    tenantId: number
     categoryId: number
     isActive: number
     createdAt: number
@@ -3437,7 +3434,6 @@ export namespace Prisma {
     description?: true
     price?: true
     stock?: true
-    tenantId?: true
     categoryId?: true
     isActive?: true
     createdAt?: true
@@ -3451,7 +3447,6 @@ export namespace Prisma {
     description?: true
     price?: true
     stock?: true
-    tenantId?: true
     categoryId?: true
     isActive?: true
     createdAt?: true
@@ -3465,7 +3460,6 @@ export namespace Prisma {
     description?: true
     price?: true
     stock?: true
-    tenantId?: true
     categoryId?: true
     isActive?: true
     createdAt?: true
@@ -3566,7 +3560,6 @@ export namespace Prisma {
     description: string | null
     price: Decimal
     stock: number
-    tenantId: string
     categoryId: string | null
     isActive: boolean
     createdAt: Date
@@ -3599,7 +3592,6 @@ export namespace Prisma {
     description?: boolean
     price?: boolean
     stock?: boolean
-    tenantId?: boolean
     categoryId?: boolean
     isActive?: boolean
     createdAt?: boolean
@@ -3613,7 +3605,6 @@ export namespace Prisma {
     description?: boolean
     price?: boolean
     stock?: boolean
-    tenantId?: boolean
     categoryId?: boolean
     isActive?: boolean
     createdAt?: boolean
@@ -3627,7 +3618,6 @@ export namespace Prisma {
     description?: boolean
     price?: boolean
     stock?: boolean
-    tenantId?: boolean
     categoryId?: boolean
     isActive?: boolean
     createdAt?: boolean
@@ -3641,14 +3631,13 @@ export namespace Prisma {
     description?: boolean
     price?: boolean
     stock?: boolean
-    tenantId?: boolean
     categoryId?: boolean
     isActive?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type ProductOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "slug" | "description" | "price" | "stock" | "tenantId" | "categoryId" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["product"]>
+  export type ProductOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "slug" | "description" | "price" | "stock" | "categoryId" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["product"]>
 
   export type $ProductPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Product"
@@ -3660,7 +3649,6 @@ export namespace Prisma {
       description: string | null
       price: Prisma.Decimal
       stock: number
-      tenantId: string
       categoryId: string | null
       isActive: boolean
       createdAt: Date
@@ -4094,7 +4082,6 @@ export namespace Prisma {
     readonly description: FieldRef<"Product", 'String'>
     readonly price: FieldRef<"Product", 'Decimal'>
     readonly stock: FieldRef<"Product", 'Int'>
-    readonly tenantId: FieldRef<"Product", 'String'>
     readonly categoryId: FieldRef<"Product", 'String'>
     readonly isActive: FieldRef<"Product", 'Boolean'>
     readonly createdAt: FieldRef<"Product", 'DateTime'>
@@ -4484,7 +4471,6 @@ export namespace Prisma {
     id: string | null
     name: string | null
     slug: string | null
-    tenantId: string | null
     parentId: string | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -4494,7 +4480,6 @@ export namespace Prisma {
     id: string | null
     name: string | null
     slug: string | null
-    tenantId: string | null
     parentId: string | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -4504,7 +4489,6 @@ export namespace Prisma {
     id: number
     name: number
     slug: number
-    tenantId: number
     parentId: number
     createdAt: number
     updatedAt: number
@@ -4516,7 +4500,6 @@ export namespace Prisma {
     id?: true
     name?: true
     slug?: true
-    tenantId?: true
     parentId?: true
     createdAt?: true
     updatedAt?: true
@@ -4526,7 +4509,6 @@ export namespace Prisma {
     id?: true
     name?: true
     slug?: true
-    tenantId?: true
     parentId?: true
     createdAt?: true
     updatedAt?: true
@@ -4536,7 +4518,6 @@ export namespace Prisma {
     id?: true
     name?: true
     slug?: true
-    tenantId?: true
     parentId?: true
     createdAt?: true
     updatedAt?: true
@@ -4619,7 +4600,6 @@ export namespace Prisma {
     id: string
     name: string
     slug: string
-    tenantId: string
     parentId: string | null
     createdAt: Date
     updatedAt: Date
@@ -4646,7 +4626,6 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     slug?: boolean
-    tenantId?: boolean
     parentId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -4656,7 +4635,6 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     slug?: boolean
-    tenantId?: boolean
     parentId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -4666,7 +4644,6 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     slug?: boolean
-    tenantId?: boolean
     parentId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -4676,13 +4653,12 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     slug?: boolean
-    tenantId?: boolean
     parentId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type CategoryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "slug" | "tenantId" | "parentId" | "createdAt" | "updatedAt", ExtArgs["result"]["category"]>
+  export type CategoryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "slug" | "parentId" | "createdAt" | "updatedAt", ExtArgs["result"]["category"]>
 
   export type $CategoryPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Category"
@@ -4691,7 +4667,6 @@ export namespace Prisma {
       id: string
       name: string
       slug: string
-      tenantId: string
       parentId: string | null
       createdAt: Date
       updatedAt: Date
@@ -5121,7 +5096,6 @@ export namespace Prisma {
     readonly id: FieldRef<"Category", 'String'>
     readonly name: FieldRef<"Category", 'String'>
     readonly slug: FieldRef<"Category", 'String'>
-    readonly tenantId: FieldRef<"Category", 'String'>
     readonly parentId: FieldRef<"Category", 'String'>
     readonly createdAt: FieldRef<"Category", 'DateTime'>
     readonly updatedAt: FieldRef<"Category", 'DateTime'>
@@ -5520,7 +5494,6 @@ export namespace Prisma {
     id: string | null
     status: $Enums.OrderStatus | null
     total: Decimal | null
-    tenantId: string | null
     userId: string | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -5530,7 +5503,6 @@ export namespace Prisma {
     id: string | null
     status: $Enums.OrderStatus | null
     total: Decimal | null
-    tenantId: string | null
     userId: string | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -5540,7 +5512,6 @@ export namespace Prisma {
     id: number
     status: number
     total: number
-    tenantId: number
     userId: number
     createdAt: number
     updatedAt: number
@@ -5560,7 +5531,6 @@ export namespace Prisma {
     id?: true
     status?: true
     total?: true
-    tenantId?: true
     userId?: true
     createdAt?: true
     updatedAt?: true
@@ -5570,7 +5540,6 @@ export namespace Prisma {
     id?: true
     status?: true
     total?: true
-    tenantId?: true
     userId?: true
     createdAt?: true
     updatedAt?: true
@@ -5580,7 +5549,6 @@ export namespace Prisma {
     id?: true
     status?: true
     total?: true
-    tenantId?: true
     userId?: true
     createdAt?: true
     updatedAt?: true
@@ -5677,7 +5645,6 @@ export namespace Prisma {
     id: string
     status: $Enums.OrderStatus
     total: Decimal
-    tenantId: string
     userId: string
     createdAt: Date
     updatedAt: Date
@@ -5706,7 +5673,6 @@ export namespace Prisma {
     id?: boolean
     status?: boolean
     total?: boolean
-    tenantId?: boolean
     userId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -5716,7 +5682,6 @@ export namespace Prisma {
     id?: boolean
     status?: boolean
     total?: boolean
-    tenantId?: boolean
     userId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -5726,7 +5691,6 @@ export namespace Prisma {
     id?: boolean
     status?: boolean
     total?: boolean
-    tenantId?: boolean
     userId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -5736,13 +5700,12 @@ export namespace Prisma {
     id?: boolean
     status?: boolean
     total?: boolean
-    tenantId?: boolean
     userId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type OrderOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "status" | "total" | "tenantId" | "userId" | "createdAt" | "updatedAt", ExtArgs["result"]["order"]>
+  export type OrderOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "status" | "total" | "userId" | "createdAt" | "updatedAt", ExtArgs["result"]["order"]>
 
   export type $OrderPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Order"
@@ -5751,7 +5714,6 @@ export namespace Prisma {
       id: string
       status: $Enums.OrderStatus
       total: Prisma.Decimal
-      tenantId: string
       userId: string
       createdAt: Date
       updatedAt: Date
@@ -6181,7 +6143,6 @@ export namespace Prisma {
     readonly id: FieldRef<"Order", 'String'>
     readonly status: FieldRef<"Order", 'OrderStatus'>
     readonly total: FieldRef<"Order", 'Decimal'>
-    readonly tenantId: FieldRef<"Order", 'String'>
     readonly userId: FieldRef<"Order", 'String'>
     readonly createdAt: FieldRef<"Order", 'DateTime'>
     readonly updatedAt: FieldRef<"Order", 'DateTime'>
@@ -6577,6 +6538,7 @@ export namespace Prisma {
     domain: 'domain',
     status: 'status',
     plan: 'plan',
+    dbSchema: 'dbSchema',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -6590,7 +6552,6 @@ export namespace Prisma {
     password: 'password',
     name: 'name',
     role: 'role',
-    tenantId: 'tenantId',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -6605,7 +6566,6 @@ export namespace Prisma {
     description: 'description',
     price: 'price',
     stock: 'stock',
-    tenantId: 'tenantId',
     categoryId: 'categoryId',
     isActive: 'isActive',
     createdAt: 'createdAt',
@@ -6619,7 +6579,6 @@ export namespace Prisma {
     id: 'id',
     name: 'name',
     slug: 'slug',
-    tenantId: 'tenantId',
     parentId: 'parentId',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
@@ -6632,7 +6591,6 @@ export namespace Prisma {
     id: 'id',
     status: 'status',
     total: 'total',
-    tenantId: 'tenantId',
     userId: 'userId',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
@@ -6802,6 +6760,7 @@ export namespace Prisma {
     domain?: StringNullableFilter<"Tenant"> | string | null
     status?: EnumTenantStatusFilter<"Tenant"> | $Enums.TenantStatus
     plan?: StringFilter<"Tenant"> | string
+    dbSchema?: StringFilter<"Tenant"> | string
     createdAt?: DateTimeFilter<"Tenant"> | Date | string
     updatedAt?: DateTimeFilter<"Tenant"> | Date | string
   }
@@ -6813,6 +6772,7 @@ export namespace Prisma {
     domain?: SortOrderInput | SortOrder
     status?: SortOrder
     plan?: SortOrder
+    dbSchema?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -6821,6 +6781,7 @@ export namespace Prisma {
     id?: string
     slug?: string
     domain?: string
+    dbSchema?: string
     AND?: TenantWhereInput | TenantWhereInput[]
     OR?: TenantWhereInput[]
     NOT?: TenantWhereInput | TenantWhereInput[]
@@ -6829,7 +6790,7 @@ export namespace Prisma {
     plan?: StringFilter<"Tenant"> | string
     createdAt?: DateTimeFilter<"Tenant"> | Date | string
     updatedAt?: DateTimeFilter<"Tenant"> | Date | string
-  }, "id" | "slug" | "domain">
+  }, "id" | "slug" | "domain" | "dbSchema">
 
   export type TenantOrderByWithAggregationInput = {
     id?: SortOrder
@@ -6838,6 +6799,7 @@ export namespace Prisma {
     domain?: SortOrderInput | SortOrder
     status?: SortOrder
     plan?: SortOrder
+    dbSchema?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: TenantCountOrderByAggregateInput
@@ -6855,6 +6817,7 @@ export namespace Prisma {
     domain?: StringNullableWithAggregatesFilter<"Tenant"> | string | null
     status?: EnumTenantStatusWithAggregatesFilter<"Tenant"> | $Enums.TenantStatus
     plan?: StringWithAggregatesFilter<"Tenant"> | string
+    dbSchema?: StringWithAggregatesFilter<"Tenant"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Tenant"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Tenant"> | Date | string
   }
@@ -6868,7 +6831,6 @@ export namespace Prisma {
     password?: StringNullableFilter<"User"> | string | null
     name?: StringNullableFilter<"User"> | string | null
     role?: EnumUserRoleFilter<"User"> | $Enums.UserRole
-    tenantId?: StringNullableFilter<"User"> | string | null
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
   }
@@ -6879,7 +6841,6 @@ export namespace Prisma {
     password?: SortOrderInput | SortOrder
     name?: SortOrderInput | SortOrder
     role?: SortOrder
-    tenantId?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -6893,7 +6854,6 @@ export namespace Prisma {
     password?: StringNullableFilter<"User"> | string | null
     name?: StringNullableFilter<"User"> | string | null
     role?: EnumUserRoleFilter<"User"> | $Enums.UserRole
-    tenantId?: StringNullableFilter<"User"> | string | null
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
   }, "id" | "email">
@@ -6904,7 +6864,6 @@ export namespace Prisma {
     password?: SortOrderInput | SortOrder
     name?: SortOrderInput | SortOrder
     role?: SortOrder
-    tenantId?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: UserCountOrderByAggregateInput
@@ -6921,7 +6880,6 @@ export namespace Prisma {
     password?: StringNullableWithAggregatesFilter<"User"> | string | null
     name?: StringNullableWithAggregatesFilter<"User"> | string | null
     role?: EnumUserRoleWithAggregatesFilter<"User"> | $Enums.UserRole
-    tenantId?: StringNullableWithAggregatesFilter<"User"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
   }
@@ -6936,7 +6894,6 @@ export namespace Prisma {
     description?: StringNullableFilter<"Product"> | string | null
     price?: DecimalFilter<"Product"> | Decimal | DecimalJsLike | number | string
     stock?: IntFilter<"Product"> | number
-    tenantId?: StringFilter<"Product"> | string
     categoryId?: StringNullableFilter<"Product"> | string | null
     isActive?: BoolFilter<"Product"> | boolean
     createdAt?: DateTimeFilter<"Product"> | Date | string
@@ -6950,7 +6907,6 @@ export namespace Prisma {
     description?: SortOrderInput | SortOrder
     price?: SortOrder
     stock?: SortOrder
-    tenantId?: SortOrder
     categoryId?: SortOrderInput | SortOrder
     isActive?: SortOrder
     createdAt?: SortOrder
@@ -6959,21 +6915,19 @@ export namespace Prisma {
 
   export type ProductWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    slug_tenantId?: ProductSlugTenantIdCompoundUniqueInput
+    slug?: string
     AND?: ProductWhereInput | ProductWhereInput[]
     OR?: ProductWhereInput[]
     NOT?: ProductWhereInput | ProductWhereInput[]
     name?: StringFilter<"Product"> | string
-    slug?: StringFilter<"Product"> | string
     description?: StringNullableFilter<"Product"> | string | null
     price?: DecimalFilter<"Product"> | Decimal | DecimalJsLike | number | string
     stock?: IntFilter<"Product"> | number
-    tenantId?: StringFilter<"Product"> | string
     categoryId?: StringNullableFilter<"Product"> | string | null
     isActive?: BoolFilter<"Product"> | boolean
     createdAt?: DateTimeFilter<"Product"> | Date | string
     updatedAt?: DateTimeFilter<"Product"> | Date | string
-  }, "id" | "slug_tenantId">
+  }, "id" | "slug">
 
   export type ProductOrderByWithAggregationInput = {
     id?: SortOrder
@@ -6982,7 +6936,6 @@ export namespace Prisma {
     description?: SortOrderInput | SortOrder
     price?: SortOrder
     stock?: SortOrder
-    tenantId?: SortOrder
     categoryId?: SortOrderInput | SortOrder
     isActive?: SortOrder
     createdAt?: SortOrder
@@ -7004,7 +6957,6 @@ export namespace Prisma {
     description?: StringNullableWithAggregatesFilter<"Product"> | string | null
     price?: DecimalWithAggregatesFilter<"Product"> | Decimal | DecimalJsLike | number | string
     stock?: IntWithAggregatesFilter<"Product"> | number
-    tenantId?: StringWithAggregatesFilter<"Product"> | string
     categoryId?: StringNullableWithAggregatesFilter<"Product"> | string | null
     isActive?: BoolWithAggregatesFilter<"Product"> | boolean
     createdAt?: DateTimeWithAggregatesFilter<"Product"> | Date | string
@@ -7018,7 +6970,6 @@ export namespace Prisma {
     id?: StringFilter<"Category"> | string
     name?: StringFilter<"Category"> | string
     slug?: StringFilter<"Category"> | string
-    tenantId?: StringFilter<"Category"> | string
     parentId?: StringNullableFilter<"Category"> | string | null
     createdAt?: DateTimeFilter<"Category"> | Date | string
     updatedAt?: DateTimeFilter<"Category"> | Date | string
@@ -7028,7 +6979,6 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     slug?: SortOrder
-    tenantId?: SortOrder
     parentId?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -7036,23 +6986,20 @@ export namespace Prisma {
 
   export type CategoryWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    slug_tenantId?: CategorySlugTenantIdCompoundUniqueInput
+    slug?: string
     AND?: CategoryWhereInput | CategoryWhereInput[]
     OR?: CategoryWhereInput[]
     NOT?: CategoryWhereInput | CategoryWhereInput[]
     name?: StringFilter<"Category"> | string
-    slug?: StringFilter<"Category"> | string
-    tenantId?: StringFilter<"Category"> | string
     parentId?: StringNullableFilter<"Category"> | string | null
     createdAt?: DateTimeFilter<"Category"> | Date | string
     updatedAt?: DateTimeFilter<"Category"> | Date | string
-  }, "id" | "slug_tenantId">
+  }, "id" | "slug">
 
   export type CategoryOrderByWithAggregationInput = {
     id?: SortOrder
     name?: SortOrder
     slug?: SortOrder
-    tenantId?: SortOrder
     parentId?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -7068,7 +7015,6 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"Category"> | string
     name?: StringWithAggregatesFilter<"Category"> | string
     slug?: StringWithAggregatesFilter<"Category"> | string
-    tenantId?: StringWithAggregatesFilter<"Category"> | string
     parentId?: StringNullableWithAggregatesFilter<"Category"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Category"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Category"> | Date | string
@@ -7081,7 +7027,6 @@ export namespace Prisma {
     id?: StringFilter<"Order"> | string
     status?: EnumOrderStatusFilter<"Order"> | $Enums.OrderStatus
     total?: DecimalFilter<"Order"> | Decimal | DecimalJsLike | number | string
-    tenantId?: StringFilter<"Order"> | string
     userId?: StringFilter<"Order"> | string
     createdAt?: DateTimeFilter<"Order"> | Date | string
     updatedAt?: DateTimeFilter<"Order"> | Date | string
@@ -7091,7 +7036,6 @@ export namespace Prisma {
     id?: SortOrder
     status?: SortOrder
     total?: SortOrder
-    tenantId?: SortOrder
     userId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -7104,7 +7048,6 @@ export namespace Prisma {
     NOT?: OrderWhereInput | OrderWhereInput[]
     status?: EnumOrderStatusFilter<"Order"> | $Enums.OrderStatus
     total?: DecimalFilter<"Order"> | Decimal | DecimalJsLike | number | string
-    tenantId?: StringFilter<"Order"> | string
     userId?: StringFilter<"Order"> | string
     createdAt?: DateTimeFilter<"Order"> | Date | string
     updatedAt?: DateTimeFilter<"Order"> | Date | string
@@ -7114,7 +7057,6 @@ export namespace Prisma {
     id?: SortOrder
     status?: SortOrder
     total?: SortOrder
-    tenantId?: SortOrder
     userId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -7132,7 +7074,6 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"Order"> | string
     status?: EnumOrderStatusWithAggregatesFilter<"Order"> | $Enums.OrderStatus
     total?: DecimalWithAggregatesFilter<"Order"> | Decimal | DecimalJsLike | number | string
-    tenantId?: StringWithAggregatesFilter<"Order"> | string
     userId?: StringWithAggregatesFilter<"Order"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Order"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Order"> | Date | string
@@ -7145,6 +7086,7 @@ export namespace Prisma {
     domain?: string | null
     status?: $Enums.TenantStatus
     plan?: string
+    dbSchema: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -7156,6 +7098,7 @@ export namespace Prisma {
     domain?: string | null
     status?: $Enums.TenantStatus
     plan?: string
+    dbSchema: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -7167,6 +7110,7 @@ export namespace Prisma {
     domain?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumTenantStatusFieldUpdateOperationsInput | $Enums.TenantStatus
     plan?: StringFieldUpdateOperationsInput | string
+    dbSchema?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -7178,6 +7122,7 @@ export namespace Prisma {
     domain?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumTenantStatusFieldUpdateOperationsInput | $Enums.TenantStatus
     plan?: StringFieldUpdateOperationsInput | string
+    dbSchema?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -7189,6 +7134,7 @@ export namespace Prisma {
     domain?: string | null
     status?: $Enums.TenantStatus
     plan?: string
+    dbSchema: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -7200,6 +7146,7 @@ export namespace Prisma {
     domain?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumTenantStatusFieldUpdateOperationsInput | $Enums.TenantStatus
     plan?: StringFieldUpdateOperationsInput | string
+    dbSchema?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -7211,6 +7158,7 @@ export namespace Prisma {
     domain?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumTenantStatusFieldUpdateOperationsInput | $Enums.TenantStatus
     plan?: StringFieldUpdateOperationsInput | string
+    dbSchema?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -7221,7 +7169,6 @@ export namespace Prisma {
     password?: string | null
     name?: string | null
     role?: $Enums.UserRole
-    tenantId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -7232,7 +7179,6 @@ export namespace Prisma {
     password?: string | null
     name?: string | null
     role?: $Enums.UserRole
-    tenantId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -7243,7 +7189,6 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     name?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
-    tenantId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -7254,7 +7199,6 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     name?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
-    tenantId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -7265,7 +7209,6 @@ export namespace Prisma {
     password?: string | null
     name?: string | null
     role?: $Enums.UserRole
-    tenantId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -7276,7 +7219,6 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     name?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
-    tenantId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -7287,7 +7229,6 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     name?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
-    tenantId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -7299,7 +7240,6 @@ export namespace Prisma {
     description?: string | null
     price: Decimal | DecimalJsLike | number | string
     stock?: number
-    tenantId: string
     categoryId?: string | null
     isActive?: boolean
     createdAt?: Date | string
@@ -7313,7 +7253,6 @@ export namespace Prisma {
     description?: string | null
     price: Decimal | DecimalJsLike | number | string
     stock?: number
-    tenantId: string
     categoryId?: string | null
     isActive?: boolean
     createdAt?: Date | string
@@ -7327,7 +7266,6 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     stock?: IntFieldUpdateOperationsInput | number
-    tenantId?: StringFieldUpdateOperationsInput | string
     categoryId?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -7341,7 +7279,6 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     stock?: IntFieldUpdateOperationsInput | number
-    tenantId?: StringFieldUpdateOperationsInput | string
     categoryId?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -7355,7 +7292,6 @@ export namespace Prisma {
     description?: string | null
     price: Decimal | DecimalJsLike | number | string
     stock?: number
-    tenantId: string
     categoryId?: string | null
     isActive?: boolean
     createdAt?: Date | string
@@ -7369,7 +7305,6 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     stock?: IntFieldUpdateOperationsInput | number
-    tenantId?: StringFieldUpdateOperationsInput | string
     categoryId?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -7383,7 +7318,6 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     stock?: IntFieldUpdateOperationsInput | number
-    tenantId?: StringFieldUpdateOperationsInput | string
     categoryId?: NullableStringFieldUpdateOperationsInput | string | null
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -7394,7 +7328,6 @@ export namespace Prisma {
     id?: string
     name: string
     slug: string
-    tenantId: string
     parentId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -7404,7 +7337,6 @@ export namespace Prisma {
     id?: string
     name: string
     slug: string
-    tenantId: string
     parentId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -7414,7 +7346,6 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
-    tenantId?: StringFieldUpdateOperationsInput | string
     parentId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -7424,7 +7355,6 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
-    tenantId?: StringFieldUpdateOperationsInput | string
     parentId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -7434,7 +7364,6 @@ export namespace Prisma {
     id?: string
     name: string
     slug: string
-    tenantId: string
     parentId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -7444,7 +7373,6 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
-    tenantId?: StringFieldUpdateOperationsInput | string
     parentId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -7454,7 +7382,6 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
-    tenantId?: StringFieldUpdateOperationsInput | string
     parentId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -7464,7 +7391,6 @@ export namespace Prisma {
     id?: string
     status?: $Enums.OrderStatus
     total: Decimal | DecimalJsLike | number | string
-    tenantId: string
     userId: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -7474,7 +7400,6 @@ export namespace Prisma {
     id?: string
     status?: $Enums.OrderStatus
     total: Decimal | DecimalJsLike | number | string
-    tenantId: string
     userId: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -7484,7 +7409,6 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     status?: EnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus
     total?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    tenantId?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -7494,7 +7418,6 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     status?: EnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus
     total?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    tenantId?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -7504,7 +7427,6 @@ export namespace Prisma {
     id?: string
     status?: $Enums.OrderStatus
     total: Decimal | DecimalJsLike | number | string
-    tenantId: string
     userId: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -7514,7 +7436,6 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     status?: EnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus
     total?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    tenantId?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -7524,7 +7445,6 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     status?: EnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus
     total?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    tenantId?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -7590,6 +7510,7 @@ export namespace Prisma {
     domain?: SortOrder
     status?: SortOrder
     plan?: SortOrder
+    dbSchema?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -7601,6 +7522,7 @@ export namespace Prisma {
     domain?: SortOrder
     status?: SortOrder
     plan?: SortOrder
+    dbSchema?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -7612,6 +7534,7 @@ export namespace Prisma {
     domain?: SortOrder
     status?: SortOrder
     plan?: SortOrder
+    dbSchema?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -7689,7 +7612,6 @@ export namespace Prisma {
     password?: SortOrder
     name?: SortOrder
     role?: SortOrder
-    tenantId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -7700,7 +7622,6 @@ export namespace Prisma {
     password?: SortOrder
     name?: SortOrder
     role?: SortOrder
-    tenantId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -7711,7 +7632,6 @@ export namespace Prisma {
     password?: SortOrder
     name?: SortOrder
     role?: SortOrder
-    tenantId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -7753,11 +7673,6 @@ export namespace Prisma {
     not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
-  export type ProductSlugTenantIdCompoundUniqueInput = {
-    slug: string
-    tenantId: string
-  }
-
   export type ProductCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
@@ -7765,7 +7680,6 @@ export namespace Prisma {
     description?: SortOrder
     price?: SortOrder
     stock?: SortOrder
-    tenantId?: SortOrder
     categoryId?: SortOrder
     isActive?: SortOrder
     createdAt?: SortOrder
@@ -7784,7 +7698,6 @@ export namespace Prisma {
     description?: SortOrder
     price?: SortOrder
     stock?: SortOrder
-    tenantId?: SortOrder
     categoryId?: SortOrder
     isActive?: SortOrder
     createdAt?: SortOrder
@@ -7798,7 +7711,6 @@ export namespace Prisma {
     description?: SortOrder
     price?: SortOrder
     stock?: SortOrder
-    tenantId?: SortOrder
     categoryId?: SortOrder
     isActive?: SortOrder
     createdAt?: SortOrder
@@ -7850,16 +7762,10 @@ export namespace Prisma {
     _max?: NestedBoolFilter<$PrismaModel>
   }
 
-  export type CategorySlugTenantIdCompoundUniqueInput = {
-    slug: string
-    tenantId: string
-  }
-
   export type CategoryCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
     slug?: SortOrder
-    tenantId?: SortOrder
     parentId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -7869,7 +7775,6 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     slug?: SortOrder
-    tenantId?: SortOrder
     parentId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -7879,7 +7784,6 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     slug?: SortOrder
-    tenantId?: SortOrder
     parentId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -7896,7 +7800,6 @@ export namespace Prisma {
     id?: SortOrder
     status?: SortOrder
     total?: SortOrder
-    tenantId?: SortOrder
     userId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -7910,7 +7813,6 @@ export namespace Prisma {
     id?: SortOrder
     status?: SortOrder
     total?: SortOrder
-    tenantId?: SortOrder
     userId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -7920,7 +7822,6 @@ export namespace Prisma {
     id?: SortOrder
     status?: SortOrder
     total?: SortOrder
-    tenantId?: SortOrder
     userId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder

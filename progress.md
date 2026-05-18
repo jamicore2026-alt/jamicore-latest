@@ -16,11 +16,22 @@
 - Created applications: `apps/api` (Fastify), `apps/web` (Next.js)
 - Set up Docker Compose with PostgreSQL 17 and Redis 7
 - Set up GitHub Actions CI pipeline (lint, typecheck, test, build, migrate)
-- Verified clean runs:
-  - `pnpm install` ✅
-  - `pnpm db:generate` ✅
-  - `pnpm build` ✅
-  - `pnpm typecheck` ✅
-  - `pnpm test` ✅
-  - `pnpm lint` ✅ (1 warning in layout.tsx for metadata export, acceptable)
-- Phase 1 complete. Ready for Phase 2: Multi-tenancy core architecture.
+- Verified clean runs: install, db:generate, build, typecheck, test, lint all pass
+- Pushed to GitHub, CI passing on `main`
+
+### 2026-05-18 — Phase 2: Multi-tenancy core architecture
+- Added `dbSchema` field to `Tenant` model for schema-per-tenant tracking
+- Created initial Prisma migration (`20250518000000_init`) for platform schema
+- Built `provisionTenant()` service that:
+  - Creates tenant record in public schema
+  - Creates dedicated PostgreSQL schema (`tenant_<slug>`)
+  - Creates all e-commerce tables (User, Product, Category, Order) in tenant schema
+- Built Fastify tenant context plugin (`plugins/tenant.ts`):
+  - Resolves tenant from subdomain (`demo.localhost`) or `x-tenant-id` header
+  - Attaches `request.tenant` and `request.tenantPrisma` for schema-scoped queries
+  - Gracefully handles missing tenants and DB connection errors
+- Added tenant-scoped API endpoint: `GET /api/v1/tenants/me/products`
+- Added tenant provisioning endpoint: `POST /api/v1/tenants`
+- All builds, typechecks, tests, lint pass clean
+
+## Next: Phase 3 — Authentication and authorization

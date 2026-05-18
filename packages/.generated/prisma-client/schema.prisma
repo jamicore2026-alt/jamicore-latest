@@ -14,6 +14,7 @@ model Tenant {
   domain    String?      @unique
   status    TenantStatus @default(ACTIVE)
   plan      String       @default("free")
+  dbSchema  String       @unique
   createdAt DateTime     @default(now())
   updatedAt DateTime     @updatedAt
 }
@@ -24,7 +25,6 @@ model User {
   password  String?
   name      String?
   role      UserRole @default(CUSTOMER)
-  tenantId  String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
@@ -36,38 +36,35 @@ model Product {
   description String?
   price       Decimal  @db.Decimal(10, 2)
   stock       Int      @default(0)
-  tenantId    String
   categoryId  String?
   isActive    Boolean  @default(true)
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 
-  @@unique([slug, tenantId])
-  @@index([tenantId, isActive])
+  @@unique([slug])
+  @@index([isActive])
 }
 
 model Category {
   id        String   @id @default(cuid())
   name      String
   slug      String
-  tenantId  String
   parentId  String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  @@unique([slug, tenantId])
+  @@unique([slug])
 }
 
 model Order {
   id        String      @id @default(cuid())
   status    OrderStatus @default(PENDING)
   total     Decimal     @db.Decimal(10, 2)
-  tenantId  String
   userId    String
   createdAt DateTime    @default(now())
   updatedAt DateTime    @updatedAt
 
-  @@index([tenantId, status])
+  @@index([status])
 }
 
 enum TenantStatus {
