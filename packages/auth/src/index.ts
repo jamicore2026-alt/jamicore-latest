@@ -3,6 +3,7 @@ import Credentials from 'next-auth/providers/credentials'
 import { prisma } from '@jamicore/db'
 import bcrypt from 'bcrypt'
 import { z } from 'zod'
+import './types.js'
 
 const credentialsSchema = z.object({
   email: z.string().email(),

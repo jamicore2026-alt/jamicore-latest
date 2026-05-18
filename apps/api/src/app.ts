@@ -10,6 +10,8 @@ import { rbacPlugin } from './plugins/rbac.js'
 import { healthRoutes } from './routes/health.js'
 import { tenantRoutes } from './routes/tenants.js'
 import { authRoutes } from './routes/auth.js'
+import { productRoutes } from './routes/products.js'
+import { categoryRoutes } from './routes/categories.js'
 
 export async function build() {
   const app = fastify({
@@ -37,6 +39,8 @@ export async function build() {
   await app.register(healthRoutes, { prefix: '/health' })
   await app.register(authRoutes, { prefix: '/api/v1/auth' })
   await app.register(tenantRoutes, { prefix: '/api/v1/tenants' })
+  await app.register(productRoutes, { prefix: '/api/v1/products' })
+  await app.register(categoryRoutes, { prefix: '/api/v1/categories' })
 
   return app
 }
